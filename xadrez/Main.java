@@ -1,24 +1,26 @@
 package xadrez;
-
+import java.util.concurrent.CountDownLatch;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Board board = new Board();
         board.fillBoard();
         GameRules rules = new GameRules(board);
         BoardPrinter printer = new BoardPrinter();
         Scanner sc = new Scanner(System.in);
+	new Menu();
+	Menu.modeSelected.await();
+        //printMenu();
 
-        printMenu();
-        String mode = sc.nextLine().trim();
+	String modo = Menu.mode;
 
         Player[] players;              // players[0] = brancas, players[1] = pretas
         StockfishPlayer engine = null; // guardado à parte só para poder encerrar no fim
 
-        if (mode.equals("3")) {
+        if (modo.equals("3")) {
             try {
                 engine = new StockfishPlayer(20);
                 players = new Player[]{ new HumanPlayer(sc), engine };
@@ -28,7 +30,7 @@ public class Main {
                 System.out.println("VERIFIQUE SE O BINARIO ESTA INSTALADO. USANDO HUMANO x HUMANO.");
                 players = new Player[]{ new HumanPlayer(sc), new HumanPlayer(sc) };
             }
-        } else if (mode.equals("2")) {
+        } else if (modo.equals("2")) {
             players = new Player[]{ new HumanPlayer(sc), new RandomPlayer() };
         } else {
             players = new Player[]{ new HumanPlayer(sc), new HumanPlayer(sc) };
@@ -85,6 +87,7 @@ public class Main {
 
     // Menu inicial dentro de uma moldura. Largura interna fixa em 42 colunas —
     // se mudar algum texto, ajuste o preenchimento para as bordas continuarem alinhadas.
+    /*
     private static void printMenu() {
         System.out.println("+------------------------------------------+");
         System.out.println("|               X A D R E Z                |");
@@ -97,4 +100,5 @@ public class Main {
         System.out.println("+------------------------------------------+");
         System.out.print("  ESCOLHA O MODO: ");
     }
+    */
 }
