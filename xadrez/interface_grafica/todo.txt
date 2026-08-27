@@ -1,0 +1,4 @@
+centralizarPeça() depois de arrastado e joga a peça no meio da casa deve receber tabuleiro
+mouseDragged() coleta x e y inicial da peça
+mouseReleased() coleta o x e y final da peça depois
+retornar() caso seja lance invalido
