@@ -3,8 +3,8 @@ Trabalho da disciplina de Programação Orientada a Objetos ministrada pelo prof
 
 COMO RODAR
 
-	javac -d bin $(find xadrez -name "*.java")
-	java -cp bin xadrez.Main
+	find -name "*.java" > source.txt
+	javac @source.txt && java xadrez.Main
 
 MODOS DE JOGO
 
