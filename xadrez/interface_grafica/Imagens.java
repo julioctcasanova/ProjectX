@@ -1,4 +1,4 @@
-package xadrez;
+package xadrez.interface_grafica;
 import java.awt.*;
 import javax.swing.*;
 

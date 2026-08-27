@@ -1,8 +1,5 @@
 package xadrez;
-
 import xadrez.pieces.PromotionPiece;
-
-import java.util.Locale;
 
 public record Move(int fromRow, int fromCol, int toRow, int toCol, PromotionPiece promotionPiece) {
 

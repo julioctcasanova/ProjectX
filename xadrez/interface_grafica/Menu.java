@@ -1,13 +1,12 @@
 package xadrez.interface_grafica;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public class Menu extends JFrame {
 	protected static final int Y_OPCOES = 400, LARGURA_OPCOES = 200, ALTURA_OPCOES = 134;
 	protected static final int Y_RETORNO = 10, LARGURA_RETORNO = 90, ALTURA_RETORNO = 40;
-	protected static String mode;
+	public static String mode;
 	public static final CountDownLatch modeSelected = new CountDownLatch(1);
 	String caminhoImagem;
 
@@ -23,11 +22,11 @@ public class Menu extends JFrame {
 		String os = System.getProperty("os.name").toLowerCase();
 
 		if (os.contains("win")) {
-			caminhoImagem = "xadrez/assets/menu/png/windows/play_button.png";
+			caminhoImagem = "xadrez/assets/menu/png/play_button.png";
 		} else if (os.contains("mac")) {
-			caminhoImagem = "xadrez/assets/menu/png/mac/play_button_linux.png";
+			caminhoImagem = "xadrez/assets/menu/png/play_button_linux.png";
 		} else if (os.contains("nux") || os.contains("nix")) {
-			caminhoImagem = "xadrez/assets/menu/png/linux/play_button_linux.png";
+			caminhoImagem = "xadrez/assets/menu/png/play_button_linux.png";
 		}
 	}
 	
@@ -35,8 +34,8 @@ public class Menu extends JFrame {
 	ImageIcon imagemRobo = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
 	ImageIcon imagemPlayer = new ImageIcon("xadrez/assets/menu/png/vsplayer_button.png");
 	ImageIcon imagemCreditos = new ImageIcon("xadrez/assets/menu/png/credits_button.png");
-	ImageIcon imagemBotFacil = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
-	ImageIcon imagemBotDificil = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
+	ImageIcon imagemBotFacil = new ImageIcon("xadrez/assets/menu/png/easy_button.png");
+	ImageIcon imagemBotDificil = new ImageIcon("xadrez/assets/menu/png/hard_button.png");
 	ImageIcon imagemVoltarCreditos = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
 	ImageIcon imagemVoltarModoDeJogo = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
 	ImageIcon imagemVoltarMenuBots = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
@@ -47,11 +46,12 @@ public class Menu extends JFrame {
 	JButton botaoPlayer = new JButton(imagemPlayer);
 	JButton botaoBotFacil = new JButton(imagemBotFacil);
 	JButton botaoBotDificil = new JButton(imagemBotDificil);
-	JButton botaoVoltarCreditos = new JButton("voltar");
-	JButton botaoVoltarModoDeJogo = new JButton("voltar");
-	JButton botaoVoltarMenuBots = new JButton("voltar");
+	JButton botaoVoltarCreditos = new JButton(imagemVoltarCreditos);
+	JButton botaoVoltarModoDeJogo = new JButton(imagemVoltarModoDeJogo);
+	JButton botaoVoltarMenuBots = new JButton(imagemVoltarMenuBots);
+	JButton botaoSair = new JButton("fechar");
 
-	Menu() {
+	public Menu() {
 		base.add(menuInicial, "menuInicial");
 		base.add(menuModoDeJogo, "menuModoDeJogo");
 		base.add(creditos, "creditos");
@@ -116,8 +116,16 @@ public class Menu extends JFrame {
 		botaoVoltarMenuBots.setMargin(new Insets(0, 0, 0, 0));
 		botaoVoltarMenuBots.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
 
+		botaoSair.setBorderPainted(false);
+		botaoSair.setContentAreaFilled(false);
+		botaoSair.setFocusPainted(false);
+		botaoSair.setMargin(new Insets(0, 0, 0, 0));
+		botaoSair.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
+
+
 		menuInicial.add(botaoModoDeJogo);
 		menuInicial.add(botaoCreditos);
+		menuInicial.add(botaoSair);
 
 		creditos.add(botaoVoltarCreditos);
 		
@@ -130,7 +138,11 @@ public class Menu extends JFrame {
 		menuBots.add(botaoVoltarMenuBots);
 
 
-
+		botaoSair.addActionListener((e) -> {
+			dispose();
+			System.exit(0);
+		});
+		
 		botaoModoDeJogo.addActionListener((e) -> {
 			cardLayout.show(base, "menuModoDeJogo");
 		});

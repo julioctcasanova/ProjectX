@@ -1,21 +1,23 @@
 package xadrez;
-import interface.Menu;
-import java.util.concurrent.CountDownLatch;
+import xadrez.interface_grafica.*;
+import java.util.concurrent.CountDownLatch.*;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+    
     public static void main(String[] args) throws InterruptedException {
         Board board = new Board();
         board.fillBoard();
         GameRules rules = new GameRules(board);
         BoardPrinter printer = new BoardPrinter();
         Scanner sc = new Scanner(System.in);
-	new Menu();
-	Menu.modeSelected.await();
-        //printMenu();
-
-	String modo = Menu.mode;
+	
+        new Menu();
+        
+        Menu.modeSelected.await();
+        
+        String modo = Menu.mode;
 
         Player[] players;              // players[0] = brancas, players[1] = pretas
         StockfishPlayer engine = null; // guardado à parte só para poder encerrar no fim
@@ -84,21 +86,4 @@ public class Main {
         }
         sc.close();
     }
-
-    // Menu inicial dentro de uma moldura. Largura interna fixa em 42 colunas —
-    // se mudar algum texto, ajuste o preenchimento para as bordas continuarem alinhadas.
-    /*
-    private static void printMenu() {
-        System.out.println("+------------------------------------------+");
-        System.out.println("|               X A D R E Z                |");
-        System.out.println("+------------------------------------------+");
-        System.out.println("|                                          |");
-        System.out.println("|   1 - Humano x Humano                    |");
-        System.out.println("|   2 - Humano x Computador (mega facil)   |");
-        System.out.println("|   3 - Humano x Stockfish (ultra dificil) |");
-        System.out.println("|                                          |");
-        System.out.println("+------------------------------------------+");
-        System.out.print("  ESCOLHA O MODO: ");
-    }
-    */
 }

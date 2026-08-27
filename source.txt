@@ -1,6 +1,7 @@
-./xadrez/CasaButton.java
 ./xadrez/GameRules.java
 ./xadrez/MoveValidator.java
+./xadrez/interface_grafica/Menu.java
+./xadrez/interface_grafica/Imagens.java
 ./xadrez/Player.java
 ./xadrez/StockfishPlayer.java
 ./xadrez/Move.java
@@ -15,11 +16,7 @@
 ./xadrez/pieces/Rook.java
 ./xadrez/pieces/King.java
 ./xadrez/pieces/Queen.java
-./xadrez/Menu.java
-./xadrez/Imagens.java
 ./xadrez/HumanPlayer.java
 ./xadrez/Board.java
 ./xadrez/BoardPrinter.java
-./xadrez/PainelTabuleiro.java
 ./xadrez/RandomPlayer.java
-./xadrez/JanelaPrincipal.java
