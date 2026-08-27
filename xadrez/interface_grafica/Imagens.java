@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Imagens extends JPanel {
-	
 	private Image imagem;
 	
 	public Imagens(String caminhoDoArquivo) {

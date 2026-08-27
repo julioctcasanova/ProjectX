@@ -1,4 +1,4 @@
-package xadrez;
+package xadrez.interface_grafica;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -9,24 +9,37 @@ public class Menu extends JFrame {
 	protected static final int Y_RETORNO = 10, LARGURA_RETORNO = 90, ALTURA_RETORNO = 40;
 	protected static String mode;
 	public static final CountDownLatch modeSelected = new CountDownLatch(1);
+	String caminhoImagem;
 
 	CardLayout cardLayout = new CardLayout();
 	JPanel base = new JPanel(cardLayout);
 
-	JPanel menuInicial = new Imagens("xadrez/menu/png/background.png");
-	JPanel menuModoDeJogo = new Imagens("xadrez/menu/png/background.png");
-	JPanel menuBots = new Imagens("xadrez/menu/png/background.png");
-	JPanel creditos = new Imagens("xadrez/menu/png/background.png");
+	JPanel menuInicial = new Imagens("xadrez/assets/menu/png/background.png");
+	JPanel menuModoDeJogo = new Imagens("xadrez/assets/menu/png/background.png");
+	JPanel menuBots = new Imagens("xadrez/assets/menu/png/background.png");
+	JPanel creditos = new Imagens("xadrez/assets/menu/png/background.png");
 
-	ImageIcon imagemModoDeJogo = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemRobo = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemPlayer = new ImageIcon("xadrez/menu/png/vsplayer_button.png");
-	ImageIcon imagemCreditos = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemBotFacil = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemBotDificil = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemVoltarCreditos = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemVoltarModoDeJogo = new ImageIcon("xadrez/menu/png/vsia_button.png");
-	ImageIcon imagemVoltarMenuBots = new ImageIcon("xadrez/menu/png/vsia_button.png");
+	{
+		String os = System.getProperty("os.name").toLowerCase();
+
+		if (os.contains("win")) {
+			caminhoImagem = "xadrez/assets/menu/png/windows/play_button.png";
+		} else if (os.contains("mac")) {
+			caminhoImagem = "xadrez/assets/menu/png/mac/play_button_linux.png";
+		} else if (os.contains("nux") || os.contains("nix")) {
+			caminhoImagem = "xadrez/assets/menu/png/linux/play_button_linux.png";
+		}
+	}
+	
+	ImageIcon imagemModoDeJogo = new ImageIcon(caminhoImagem);
+	ImageIcon imagemRobo = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
+	ImageIcon imagemPlayer = new ImageIcon("xadrez/assets/menu/png/vsplayer_button.png");
+	ImageIcon imagemCreditos = new ImageIcon("xadrez/assets/menu/png/credits_button.png");
+	ImageIcon imagemBotFacil = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
+	ImageIcon imagemBotDificil = new ImageIcon("xadrez/assets/menu/png/vsia_button.png");
+	ImageIcon imagemVoltarCreditos = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
+	ImageIcon imagemVoltarModoDeJogo = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
+	ImageIcon imagemVoltarMenuBots = new ImageIcon("xadrez/assets/menu/png/return_button_short.png");
 
 	JButton botaoModoDeJogo = new JButton(imagemModoDeJogo);
 	JButton botaoCreditos = new JButton(imagemCreditos);
