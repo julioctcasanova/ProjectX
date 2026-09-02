@@ -19,5 +19,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public char fenLetter() { return 'r'; }
+    public char fenLetter() {
+        return 'r'; 
+    }
 }

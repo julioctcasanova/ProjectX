@@ -124,7 +124,7 @@ public class GameRules {
     }
 
     // Registra a casa pulada por um avanço duplo de peão; qualquer outro lance limpa
-    // o registro. Deve ser chamado ao fim de TODO lance bem-sucedido.
+    // o registro. Deve ser chamado ao fim de 
     private void updateEnPassantTarget(Piece piece, int fromRow, int fromCol, int toRow) {
         if (piece instanceof Pawn && Math.abs(toRow - fromRow) == 2) {
             enPassantRow = (fromRow + toRow) / 2;

@@ -2,6 +2,7 @@
 ./xadrez/MoveValidator.java
 ./xadrez/interface_grafica/Menu.java
 ./xadrez/interface_grafica/Imagens.java
+./xadrez/interface_grafica/Tabuleiro.java
 ./xadrez/Player.java
 ./xadrez/StockfishPlayer.java
 ./xadrez/Move.java
@@ -20,3 +21,5 @@
 ./xadrez/Board.java
 ./xadrez/BoardPrinter.java
 ./xadrez/RandomPlayer.java
+./teste/MyDraggableComponent.java
+./teste/Main.java

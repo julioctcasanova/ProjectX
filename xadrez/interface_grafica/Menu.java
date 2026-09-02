@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class Menu extends JFrame {
 	protected static final int Y_OPCOES = 400, LARGURA_OPCOES = 200, ALTURA_OPCOES = 134;
-	protected static final int Y_RETORNO = 10, LARGURA_RETORNO = 90, ALTURA_RETORNO = 40;
+	protected static final int X_RETORNO = 10, Y_RETORNO = 10, LARGURA_RETORNO = 90, ALTURA_RETORNO = 40;
 	public static String mode;
 	public static final CountDownLatch modeSelected = new CountDownLatch(1);
 	String caminhoImagem;
@@ -62,65 +62,16 @@ public class Menu extends JFrame {
 		menuBots.setLayout(null);
 		creditos.setLayout(null);
 
-		botaoModoDeJogo.setBorderPainted(false);
-		botaoModoDeJogo.setContentAreaFilled(false);
-		botaoModoDeJogo.setFocusPainted(false);
-		botaoModoDeJogo.setMargin(new Insets(0, 0, 0, 0));
-		botaoModoDeJogo.setBounds(100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-
-		botaoCreditos.setBorderPainted(false);
-		botaoCreditos.setContentAreaFilled(false);
-		botaoCreditos.setFocusPainted(false);
-		botaoCreditos.setMargin(new Insets(0, 0, 0, 0));
-		botaoCreditos.setBounds(500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-		
-		botaoPlayer.setBorderPainted(false);
-		botaoPlayer.setContentAreaFilled(false);
-		botaoPlayer.setFocusPainted(false);
-		botaoPlayer.setMargin(new Insets(0, 0, 0, 0));
-		botaoPlayer.setBounds(100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-
-		botaoRobo.setBorderPainted(false);
-		botaoRobo.setContentAreaFilled(false);
-		botaoRobo.setFocusPainted(false);
-		botaoRobo.setMargin(new Insets(0, 0, 0, 0));
-		botaoRobo.setBounds(500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-
-		botaoBotFacil.setBorderPainted(false);
-		botaoBotFacil.setContentAreaFilled(false);
-		botaoBotFacil.setFocusPainted(false);
-		botaoBotFacil.setMargin(new Insets(0, 0, 0, 0));
-		botaoBotFacil.setBounds(100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-
-		botaoBotDificil.setBorderPainted(false);
-		botaoBotDificil.setContentAreaFilled(false);
-		botaoBotDificil.setFocusPainted(false);
-		botaoBotDificil.setMargin(new Insets(0, 0, 0, 0));
-		botaoBotDificil.setBounds(500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
-
-		botaoVoltarCreditos.setBorderPainted(false);
-		botaoVoltarCreditos.setContentAreaFilled(false);
-		botaoVoltarCreditos.setFocusPainted(false);
-		botaoVoltarCreditos.setMargin(new Insets(0, 0, 0, 0));
-		botaoVoltarCreditos.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
-
-		botaoVoltarModoDeJogo.setBorderPainted(false);
-		botaoVoltarModoDeJogo.setContentAreaFilled(false);
-		botaoVoltarModoDeJogo.setFocusPainted(false);
-		botaoVoltarModoDeJogo.setMargin(new Insets(0, 0, 0, 0));
-		botaoVoltarModoDeJogo.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
-
-		botaoVoltarMenuBots.setBorderPainted(false);
-		botaoVoltarMenuBots.setContentAreaFilled(false);
-		botaoVoltarMenuBots.setFocusPainted(false);
-		botaoVoltarMenuBots.setMargin(new Insets(0, 0, 0, 0));
-		botaoVoltarMenuBots.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
-
-		botaoSair.setBorderPainted(false);
-		botaoSair.setContentAreaFilled(false);
-		botaoSair.setFocusPainted(false);
-		botaoSair.setMargin(new Insets(0, 0, 0, 0));
-		botaoSair.setBounds(10, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
+		starter(botaoModoDeJogo, 100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoCreditos, 500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoPlayer,100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoRobo,500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoBotFacil, 100, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoBotDificil, 500, Y_OPCOES, LARGURA_OPCOES, ALTURA_OPCOES);
+		starter(botaoVoltarCreditos, X_RETORNO, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
+		starter(botaoVoltarModoDeJogo, X_RETORNO, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
+		starter(botaoVoltarMenuBots, X_RETORNO, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
+		starter(botaoSair, X_RETORNO, Y_RETORNO, LARGURA_RETORNO, ALTURA_RETORNO);
 
 
 		menuInicial.add(botaoModoDeJogo);
@@ -189,5 +140,13 @@ public class Menu extends JFrame {
 		setSize(800, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+	}
+	// Função só para inicializar os JButtons
+	private void starter(JButton button, int posXInicial, int posYInicial, int larguraBotao, int alturaBotao) {
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);
+		button.setMargin(new Insets(0, 0, 0, 0));
+		button.setBounds(posXInicial, posYInicial, larguraBotao, alturaBotao);
 	}
 }

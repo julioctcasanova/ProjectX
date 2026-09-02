@@ -1,6 +1,5 @@
 package xadrez;
 import xadrez.interface_grafica.*;
-import java.util.concurrent.CountDownLatch.*;
 import java.io.IOException;
 import java.util.Scanner;
 
